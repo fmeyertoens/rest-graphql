@@ -1,0 +1,26 @@
+{
+  "name": "rest-graphql",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build"
+  },
+  "dependencies": {
+    "vue": "^2.6.10",
+    "vue-router": "^3.0.3",
+    "vue-splitpane": "^1.0.4",
+    "vuetify": "^2.1.5"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-typescript": "^3.11.0",
+    "@vue/cli-service": "^3.11.0",
+    "node-sass": "^4.9.0",
+    "sass": "^1.17.4",
+    "sass-loader": "^7.1.0",
+    "typescript": "^3.4.3",
+    "vue-cli-plugin-vuetify": "^1.0.1",
+    "vue-template-compiler": "^2.6.10",
+    "vuetify-loader": "^1.2.2"
+  }
+}
