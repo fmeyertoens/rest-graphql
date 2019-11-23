@@ -32,14 +32,31 @@
 
 <script lang="ts">
 import Vue from 'vue';
+import store from '../store';
 
 export default Vue.extend({
   data: () => {
     return {
       dialog: false,
-      restUri: 'https://people-api.herokuapp.com/',
-      graphqlUri: 'https://event-api-graphql.herokuapp.com/'
     };
+  },
+  computed: {
+    restUri: {
+      get() {
+        return store.state.restUri;
+      },
+      set(value) {
+        store.commit('updateRestUri', value);
+      }
+    },
+    graphqlUri: {
+      get() {
+        return store.state.graphqlUri;
+      },
+      set(value) {
+        store.commit('updateGraphQLUri', value);
+      }
+    }
   }
 });
 </script>

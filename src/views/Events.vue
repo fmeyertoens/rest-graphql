@@ -10,8 +10,9 @@
 <script lang="ts">
 import Vue from 'vue';
 import EventFetch from '@/components/EventFetch.vue';
-import graphqlOptions from '@/utils/graphqlOptions';
-import restOptions from '@/utils/restOptions';
+import graphqlOpts from '@/utils/graphqlOptions';
+import restOpts from '@/utils/restOptions';
+import store from '../store';
 
 export default Vue.extend({
   components: {
@@ -19,9 +20,23 @@ export default Vue.extend({
   },
   data: () => {
     return {
-      graphqlOptions,
-      restOptions
+      graphqlOpts,
+      restOpts
     };
+  },
+  computed: {
+    restOptions() {
+      return {
+        ...restOpts,
+        apiUrl: store.state.restUri
+      };
+    },
+    graphqlOptions() {
+      return {
+        ...graphqlOpts,
+        apiUrl: store.state.graphqlUri
+      };
+    }
   }
 });
 </script>
