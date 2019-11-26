@@ -41,15 +41,15 @@ export default Vue.extend({
     async fetchEvents() {
       try {
         this.loading = true;
-        const startTime = Date.now();
+        const startTime = performance.now();
         const response = await fetch(
           this.EventApiOptions.apiUrl,
           this.EventApiOptions.fetchOptions
         );
-        this.timeToReceive = Date.now() - startTime;
+        this.timeToReceive = performance.now() - startTime;
 
         const json = await response.json();
-        this.timeToParse = Date.now() - startTime;
+        this.timeToParse = performance.now() - startTime;
 
         this.events = this.EventApiOptions.extractData(json);
 
