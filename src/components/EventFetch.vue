@@ -6,7 +6,7 @@
         color="primary"
         >Fetch Events</v-btn>
       <p>Received: {{timeToReceive}}ms - Parsed: {{timeToParse}}ms</p>
-      <event-list :events=events />
+      <event-list :events=events v-if="showData"/>
     </v-col>
 </template>
 
@@ -27,6 +27,11 @@ export default Vue.extend({
     EventApiOptions: {
       type: Object as () => EventApiOptions,
       required: true
+    },
+    showData: {
+      type: Boolean,
+      required: false,
+      default: false
     }
   },
   data: () => {

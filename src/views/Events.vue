@@ -1,8 +1,13 @@
 <template>
   <v-container>
+    <v-checkbox
+      v-model="showData"
+      label="Show Data"
+      class="my-0"
+    ></v-checkbox>
     <v-row>
-    <event-fetch name="GraphQL" :EventApiOptions="graphqlOptions"/>
-    <event-fetch name="REST" :EventApiOptions="restOptions"/>
+    <event-fetch name="GraphQL" :EventApiOptions="graphqlOptions" :showData="showData"/>
+    <event-fetch name="REST" :EventApiOptions="restOptions" :showData="showData"/>
     </v-row>
   </v-container>
 </template>
@@ -21,7 +26,8 @@ export default Vue.extend({
   data: () => {
     return {
       graphqlOpts,
-      restOpts
+      restOpts,
+      showData: false
     };
   },
   computed: {
