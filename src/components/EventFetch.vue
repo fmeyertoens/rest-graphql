@@ -43,6 +43,11 @@ export default Vue.extend({
       type: Boolean,
       required: false,
       default: false
+    },
+    fetchInterval: {
+      type: Number,
+      required: false,
+      default: 5000
     }
   },
   data: () => {
@@ -60,7 +65,7 @@ export default Vue.extend({
       this.loading = true;
       if (this.fetchContinuously) {
         this.fetchingContinuously = true;
-        this.intervalID = setInterval(this.getEventData, 3000);
+        this.intervalID = setInterval(this.getEventData, this.fetchInterval);
       } else {
         await this.getEventData();
         this.loading = false;

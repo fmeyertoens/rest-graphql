@@ -13,6 +13,13 @@
         class="my-0 mx-2"
         dense
       ></v-checkbox>
+      <v-text-field
+        v-model.number="fetchInterval"
+        type="number"
+        dense
+        label="Interval"
+        class="numberInput"
+      ></v-text-field>
     </div>
     <v-row>
     <event-fetch
@@ -20,12 +27,14 @@
       :EventApiOptions="graphqlOptions"
       :showData="showData"
       :fetchContinuously="fetchContinuously"
+      :fetchInterval="fetchInterval"
     />
     <event-fetch
       name="REST"
       :EventApiOptions="restOptions"
       :showData="showData"
       :fetchContinuously="fetchContinuously"
+      :fetchInterval="fetchInterval"
     />
     </v-row>
   </v-container>
@@ -47,7 +56,8 @@ export default Vue.extend({
       graphqlOpts,
       restOpts,
       showData: false,
-      fetchContinuously: false
+      fetchContinuously: false,
+      fetchInterval: 5000
     };
   },
   computed: {
@@ -66,3 +76,8 @@ export default Vue.extend({
   }
 });
 </script>
+<style lang="scss" scoped>
+.numberInput {
+  max-width: 5em;
+}
+</style>
