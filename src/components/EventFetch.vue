@@ -4,7 +4,13 @@
       <v-btn @click="fetchEvents"
         :loading="loading"
         color="primary"
-        >Fetch Events</v-btn>
+        class="mx-2"
+      >Fetch Events</v-btn>
+      <v-btn @click="stopFetchingContinuously"
+        v-if="fetchingContinuously"
+        color="secondary"
+        class="mx-2"
+      >Stop Fetching</v-btn>
       <p>Received: {{timeToReceive}}ms - Parsed: {{timeToParse}}ms</p>
       <event-list :events=events v-if="showData"/>
     </v-col>
@@ -32,6 +38,11 @@ export default Vue.extend({
       type: Boolean,
       required: false,
       default: false
+    },
+    fetchContinuously: {
+      type: Boolean,
+      required: false,
+      default: false
     }
   },
   data: () => {
@@ -39,13 +50,31 @@ export default Vue.extend({
       events: [],
       loading: false,
       timeToReceive: 0,
-      timeToParse: 0
+      timeToParse: 0,
+      fetchingContinuously: false,
+      intervalID: 0
     };
   },
   methods: {
     async fetchEvents() {
+      this.loading = true;
+      if (this.fetchContinuously) {
+        this.fetchingContinuously = true;
+        this.intervalID = setInterval(this.getEventData, 3000);
+      } else {
+        await this.getEventData();
+        this.loading = false;
+      }
+    },
+    stopFetchingContinuously() {
+      this.fetchingContinuously = false;
+      this.loading = false;
+      if (this.intervalID) {
+        clearInterval(this.intervalID);
+      }
+    },
+    async getEventData() {
       try {
-        this.loading = true;
         const startTime = performance.now();
         const response = await fetch(
           this.EventApiOptions.apiUrl,
@@ -60,8 +89,6 @@ export default Vue.extend({
 
       } catch (error) {
         console.log(error);
-      } finally {
-        this.loading = false;
       }
     }
   }

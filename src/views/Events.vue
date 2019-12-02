@@ -1,13 +1,32 @@
 <template>
   <v-container>
-    <v-checkbox
-      v-model="showData"
-      label="Show Data"
-      class="my-0"
-    ></v-checkbox>
+    <div class="d-flex">
+      <v-checkbox
+        v-model="showData"
+        label="Show Data"
+        class="my-0 mx-2"
+        dense
+      ></v-checkbox>
+      <v-checkbox
+        v-model="fetchContinuously"
+        label="Fetch Continuously"
+        class="my-0 mx-2"
+        dense
+      ></v-checkbox>
+    </div>
     <v-row>
-    <event-fetch name="GraphQL" :EventApiOptions="graphqlOptions" :showData="showData"/>
-    <event-fetch name="REST" :EventApiOptions="restOptions" :showData="showData"/>
+    <event-fetch
+      name="GraphQL"
+      :EventApiOptions="graphqlOptions"
+      :showData="showData"
+      :fetchContinuously="fetchContinuously"
+    />
+    <event-fetch
+      name="REST"
+      :EventApiOptions="restOptions"
+      :showData="showData"
+      :fetchContinuously="fetchContinuously"
+    />
     </v-row>
   </v-container>
 </template>
@@ -27,7 +46,8 @@ export default Vue.extend({
     return {
       graphqlOpts,
       restOpts,
-      showData: false
+      showData: false,
+      fetchContinuously: false
     };
   },
   computed: {
