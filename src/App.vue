@@ -15,7 +15,7 @@
           >
             <v-tab to="/">Home</v-tab>
             <v-tab to="/events">Events</v-tab>
-            <v-tab to="/logs">Logs</v-tab>
+            <!-- <v-tab to="/logs">Logs</v-tab> -->
           </v-tabs>
       </template>
     </v-app-bar>

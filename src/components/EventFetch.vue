@@ -4,14 +4,19 @@
       <v-btn @click="fetchEvents"
         :loading="loading"
         color="primary"
-        class="mx-2"
+        class="ma-2"
       >Fetch Events</v-btn>
       <v-btn @click="stopFetchingContinuously"
         v-if="fetchingContinuously"
-        color="secondary"
-        class="mx-2"
+        color="accent"
+        class="ma-2"
       >Stop Fetching</v-btn>
-      <p>Received: {{timeToReceive}}ms - Parsed: {{timeToParse}}ms</p>
+      <v-btn @click="clearTable"
+        v-if="timings.length > 0"
+        color="accent"
+        class="ma-2"
+      >Clear Table</v-btn>
+      <timing-list :timings=timings />
       <event-list :events=events v-if="showData"/>
     </v-col>
 </template>
@@ -19,11 +24,13 @@
 <script lang="ts">
 import Vue from 'vue';
 import EventList from '@/components/EventList.vue';
+import TimingList from '@/components/TimingList.vue';
 import EventApiOptions from '@/utils/eventApiOptions.interface';
 
 export default Vue.extend({
   components: {
-    EventList
+    EventList,
+    TimingList
   },
   props: {
     name: {
@@ -54,8 +61,7 @@ export default Vue.extend({
     return {
       events: [],
       loading: false,
-      timeToReceive: 0,
-      timeToParse: 0,
+      timings: [] as Array<{timeToReceive: number, timeToParse: number}>,
       fetchingContinuously: false,
       intervalID: 0
     };
@@ -78,6 +84,9 @@ export default Vue.extend({
         clearInterval(this.intervalID);
       }
     },
+    clearTable() {
+      this.timings = [];
+    },
     async getEventData() {
       try {
         const startTime = performance.now();
@@ -85,13 +94,13 @@ export default Vue.extend({
           this.EventApiOptions.apiUrl,
           this.EventApiOptions.fetchOptions
         );
-        this.timeToReceive = performance.now() - startTime;
+        const timeToReceive = performance.now() - startTime;
 
         const json = await response.json();
-        this.timeToParse = performance.now() - startTime;
+        const timeToParse = performance.now() - startTime;
 
         this.events = this.EventApiOptions.extractData(json);
-
+        this.timings.push({timeToReceive, timeToParse});
       } catch (error) {
         console.log(error);
       }
