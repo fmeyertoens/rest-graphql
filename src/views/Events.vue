@@ -19,6 +19,7 @@
         dense
         label="Interval"
         class="numberInput"
+        step="100"
       ></v-text-field>
     </div>
     <v-row>
