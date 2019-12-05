@@ -8,8 +8,8 @@
     </thead>
     <tbody>
       <tr v-for="timing in timings">
-        <td>{{timing.timeToReceive}}</td>
-        <td>{{timing.timeToParse}}</td>
+        <td>{{timing.timeToReceive.toFixed(2)}}</td>
+        <td>{{timing.timeToParse.toFixed(2)}}</td>
       </tr>
     </tbody>
   </table>
