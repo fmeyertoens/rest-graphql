@@ -13,10 +13,10 @@
       <v-container>
         <v-row>
           <v-col cols="12">
-            <v-text-field label="REST URI" required v-model="restUri"></v-text-field>
+            <v-combobox label="REST URI" required v-model="restUri" :items="restUris"></v-combobox>
           </v-col>
           <v-col cols="12">
-            <v-text-field label="GraphQL URI" required v-model="graphqlUri"></v-text-field>
+            <v-combobox label="GraphQL URI" required v-model="graphqlUri" :items="graphQLUris"></v-combobox>
           </v-col>
         </v-row>
       </v-container>
@@ -38,6 +38,14 @@ export default Vue.extend({
   data: () => {
     return {
       dialog: false,
+      graphQLUris: [
+        'https://event-api-graphql.herokuapp.com/api',
+        'http://localhost:8000/api'
+      ],
+      restUris: [
+        'https://people-api.herokuapp.com/events',
+        'http://localhost:5000/events'
+      ]
     };
   },
   computed: {
