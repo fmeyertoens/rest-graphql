@@ -7,7 +7,7 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
-    "vue": "^2.7.10",
+    "vue": "^3.0.0",
     "vue-router": "^3.6.5",
     "vue-splitpane": "^1.0.6",
     "vuetify": "^2.6.10",
