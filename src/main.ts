@@ -1,20 +1,13 @@
-import Vue from 'vue';
-import App from './App.vue';
-import router from './router';
-import vuetify from './plugins/vuetify';
+import { createApp } from "vue";
+import App from "./App.vue";
+import router from "./router";
+import vuetify from "./plugins/vuetify";
+import { createPinia } from "pinia";
 
-// @ts-ignore no typings
-import splitPane from 'vue-splitpane';
+const app = createApp(App);
 
-import store from './store';
+app.use(createPinia());
+app.use(router);
+app.use(vuetify);
 
-Vue.config.productionTip = false;
-
-Vue.component('split-pane', splitPane);
-
-new Vue({
-  router,
-  vuetify,
-  store,
-  render: (h) => h(App)
-}).$mount('#app');
+app.mount("#app");

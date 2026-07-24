@@ -1,22 +1,18 @@
-import Vue from 'vue';
-import Vuex from 'vuex';
+import { defineStore } from "pinia";
 
-Vue.use(Vuex);
-
-export default new Vuex.Store({
-  state: {
-    restUri: 'https://people-api.herokuapp.com/events',
-    graphqlUri: 'https://event-api-graphql.herokuapp.com/api'
-  },
-  mutations: {
-    updateRestUri(state, newUri) {
-      state.restUri = newUri;
+export const useSettingsStore = defineStore("settings", {
+    state: () => ({
+        restUri: "https://people-api.herokuapp.com/events",
+        graphqlUri: "https://event-api-graphql.herokuapp.com/api",
+    }),
+    actions: {
+        updateRestUri(newUri: string) {
+            this.restUri = newUri;
+        },
+        updateGraphqlUri(newUri: string) {
+            this.graphqlUri = newUri;
+        },
     },
-    updateGraphQLUri(state, newUri) {
-      state.graphqlUri = newUri;
-    }
-  },
-  actions: {
-
-  }
 });
+
+export default useSettingsStore;
