@@ -18,6 +18,7 @@ import { defineComponent, PropType } from "vue";
 import EventList from "@/components/EventList.vue";
 import TimingList from "@/components/TimingList.vue";
 import EventApiOptions from "@/utils/eventApiOptions.interface";
+import type { Event } from "@/types/event";
 
 type Timing = { timeToReceive: number; timeToParse: number };
 
@@ -53,7 +54,7 @@ export default defineComponent({
   },
   data() {
     return {
-      events: [] as unknown[],
+      events: [] as Event[],
       loading: false,
       timings: [] as Timing[],
       fetchingContinuously: false,

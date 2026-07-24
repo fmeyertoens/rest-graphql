@@ -8,11 +8,12 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from "vue";
+import type { Event } from "@/types/event";
 
 export default defineComponent({
   props: {
     events: {
-      type: Array as PropType<Array<{ title: string; description: string; price: number }>>,
+      type: Array as PropType<Event[]>,
       required: true,
     },
   },
