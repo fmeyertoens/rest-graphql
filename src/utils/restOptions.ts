@@ -6,10 +6,10 @@ const fetchOptions: RequestInit = {};
 
 const extractData = (json: any) => json;
 
-const graphqlOptions: EventApiOptions = {
+const restOptions: EventApiOptions = {
   extractData,
   apiUrl,
   fetchOptions,
 };
 
-export default graphqlOptions;
+export default restOptions;
