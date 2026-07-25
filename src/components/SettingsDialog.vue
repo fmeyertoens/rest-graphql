@@ -49,10 +49,15 @@ export default defineComponent({
     const settingsStore = useSettingsStore();
     const dialog = ref(false);
     const graphQLUris = [
+      "/graphql/api",
       "https://event-api-graphql.herokuapp.com/api",
       "http://localhost:8000/api",
     ];
-    const restUris = ["https://people-api.herokuapp.com/events", "http://localhost:5000/events"];
+    const restUris = [
+      "/rest/events",
+      "https://people-api.herokuapp.com/events",
+      "http://localhost:5000/events",
+    ];
 
     const restUri = computed({
       get: () => settingsStore.restUri,
