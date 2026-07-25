@@ -7,23 +7,24 @@
       </tr>
     </thead>
     <tbody>
-      <tr v-for="timing in timings">
-        <td>{{timing.timeToReceive.toFixed(2)}}</td>
-        <td>{{timing.timeToParse.toFixed(2)}}</td>
+      <tr v-for="(timing, index) in timings" :key="index">
+        <td>{{ timing.timeToReceive.toFixed(2) }}</td>
+        <td>{{ timing.timeToParse.toFixed(2) }}</td>
       </tr>
     </tbody>
   </table>
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
+import { defineComponent, PropType } from "vue";
 
-export default Vue.extend({
+export default defineComponent({
   props: {
     timings: {
-      required: true
-    }
-  }
+      type: Array as PropType<Array<{ timeToReceive: number; timeToParse: number }>>,
+      required: true,
+    },
+  },
 });
 </script>
 <style lang="scss" scoped>
@@ -31,7 +32,8 @@ table {
   border-collapse: collapse;
 }
 
-th, td {
+th,
+td {
   padding: 0.25rem 0.5rem;
   border: 1px solid #ccc;
 }

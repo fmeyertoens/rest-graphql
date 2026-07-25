@@ -1,29 +1,55 @@
 # rest-graphql
 
-## Project setup
-```
+REST and GraphQL comparison app built with Vue 3, Vite, Vuetify 3, Vue Router 4, and Pinia.
+
+## Setup
+
+```bash
 npm install
 ```
 
-### Compiles and hot-reloads for development
-```
-npm run serve
+## Development
+
+Start the Vite dev server:
+
+```bash
+npm run dev
 ```
 
-### Compiles and minifies for production
-```
+`npm run serve` is kept as an alias for the same Vite command.
+
+## Production build
+
+Create a production build:
+
+```bash
 npm run build
 ```
 
-### Run your tests
-```
-npm run test
+Preview the production build locally:
+
+```bash
+npm run preview
 ```
 
-### Lints and fixes files
-```
+## Linting
+
+Run ESLint:
+
+```bash
 npm run lint
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## Formatting
+
+Format the repository with Oxfmt:
+
+```bash
+npm run format
+```
+
+Check formatting without writing changes:
+
+```bash
+npm run format:check
+```

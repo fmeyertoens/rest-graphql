@@ -1,4 +1,4 @@
-import EventApiOptions from '@/utils/eventApiOptions.interface';
+import EventApiOptions from "@/utils/eventApiOptions.interface";
 
 const eventsRequest = {
   query: `
@@ -14,14 +14,14 @@ const eventsRequest = {
   `,
 };
 
-const apiUrl = 'https://event-api-graphql.herokuapp.com/api';
+const apiUrl = "https://event-api-graphql.herokuapp.com/api";
 
 const fetchOptions: RequestInit = {
-  method: 'POST',
+  method: "POST",
   body: JSON.stringify(eventsRequest),
   headers: {
-    'Content-Type': 'application/json'
-  }
+    "Content-Type": "application/json",
+  },
 };
 
 const extractData = (json: any) => json.data.events;
@@ -29,7 +29,7 @@ const extractData = (json: any) => json.data.events;
 const graphqlOptions: EventApiOptions = {
   extractData,
   apiUrl,
-  fetchOptions
+  fetchOptions,
 };
 
 export default graphqlOptions;

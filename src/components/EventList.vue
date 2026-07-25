@@ -1,19 +1,21 @@
 <template>
   <ul>
-    <li v-for="event in events">
-      {{event.title}} - {{event.description}} - {{event.price}} €
+    <li v-for="event in events" :key="event.title">
+      {{ event.title }} - {{ event.description }} - {{ event.price }} €
     </li>
   </ul>
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
+import { defineComponent, PropType } from "vue";
+import type { Event } from "@/types/event";
 
-export default Vue.extend({
+export default defineComponent({
   props: {
     events: {
-      required: true
-    }
-  }
+      type: Array as PropType<Event[]>,
+      required: true,
+    },
+  },
 });
 </script>

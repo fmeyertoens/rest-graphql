@@ -1,15 +1,15 @@
-import EventApiOptions from '@/utils/eventApiOptions.interface';
+import EventApiOptions from "@/utils/eventApiOptions.interface";
 
-const apiUrl = 'https://people-api.herokuapp.com/events';
+const apiUrl = "https://people-api.herokuapp.com/events";
 
 const fetchOptions: RequestInit = {};
 
 const extractData = (json: any) => json;
 
-const graphqlOptions: EventApiOptions = {
+const restOptions: EventApiOptions = {
   extractData,
   apiUrl,
-  fetchOptions
+  fetchOptions,
 };
 
-export default graphqlOptions;
+export default restOptions;
