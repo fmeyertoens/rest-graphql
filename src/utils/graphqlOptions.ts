@@ -14,7 +14,7 @@ const eventsRequest = {
   `,
 };
 
-const apiUrl = "https://event-api-graphql.herokuapp.com/api";
+const apiUrl = "/graphql/api";
 
 const fetchOptions: RequestInit = {
   method: "POST",

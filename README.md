@@ -8,8 +8,8 @@ This project is the browser client for the two backend projects in this workspac
 
 | Project                                  | Role              | Default local endpoint used by this client |
 | ---------------------------------------- | ----------------- | ------------------------------------------ |
-| [`../people-api`](../people-api)          | REST event API    | `http://localhost:5000/events`             |
-| [`../graphql-server`](../graphql-server)  | GraphQL event API | `http://localhost:8000/api`                |
+| [`../people-api`](../people-api)         | REST event API    | `http://localhost:5000/events`             |
+| [`../graphql-server`](../graphql-server) | GraphQL event API | `http://localhost:8000/api`                |
 
 The client initially uses deployed API URLs. Open the Settings dialog in the app and select the local URLs above after starting the two backends. The selected URIs live in the Pinia store for the current browser session. A Docker Compose build supplies same-origin defaults (`/rest/events` and `/graphql/api`) through `VITE_REST_URI` and `VITE_GRAPHQL_URI`.
 

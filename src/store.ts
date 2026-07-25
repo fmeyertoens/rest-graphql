@@ -1,8 +1,7 @@
 import { defineStore } from "pinia";
 
-const defaultRestUri = import.meta.env.VITE_REST_URI ?? "https://people-api.herokuapp.com/events";
-const defaultGraphqlUri =
-  import.meta.env.VITE_GRAPHQL_URI ?? "https://event-api-graphql.herokuapp.com/api";
+const defaultRestUri = import.meta.env.VITE_REST_URI ?? "/rest/events";
+const defaultGraphqlUri = import.meta.env.VITE_GRAPHQL_URI ?? "/graphql/api";
 
 export const useSettingsStore = defineStore("settings", {
   state: () => ({

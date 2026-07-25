@@ -1,6 +1,6 @@
 import EventApiOptions from "@/utils/eventApiOptions.interface";
 
-const apiUrl = "https://people-api.herokuapp.com/events";
+const apiUrl = "/rest/events";
 
 const fetchOptions: RequestInit = {};
 
